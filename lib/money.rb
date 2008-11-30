@@ -69,6 +69,10 @@ class Money
     result
   end
   
+  def abs
+    return Money.create_from_cents cents.abs
+  end
+
   # Is this free?
   def free?
     return (cents == 0)
@@ -99,7 +103,6 @@ class Money
       "-$#{seperated.join(".")}"
     end
   end
-
 
   # Conversation to self
   def to_money
