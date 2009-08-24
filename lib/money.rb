@@ -104,7 +104,7 @@ class Money
     end
   end
 
-  # Conversation to self
+  # Conversion to self
   def to_money
     self
   end
@@ -112,6 +112,7 @@ class Money
   private 
   # Get a value in preperation for creating a new Money object. 
   def self.get_value(value)
+    return value.dollars if value.is_a?(Money)
     value = value.gsub(/[^0-9.]/,'').to_f if value.kind_of?(String) 
     value = 0 if value.nil?
     unless value.kind_of?(Integer) or value.kind_of?(Float)

@@ -67,6 +67,13 @@ class MoneyTest < Test::Unit::TestCase
     assert_equal 1220, money.cents
     assert_instance_of Fixnum, money.cents 
   end
+
+  def test_should_create_money_object_from_another_money_object
+    money =  Money.new(12.196)
+    assert_equal 1220, money.cents
+    new_money = Money.new(money)
+    assert_equal 1220, new_money.cents
+  end
   
   def test_should_raise_exception_if_invalid_type_passed_to_initialize
     assert_raise(MoneyError) { Money.new([]) }
